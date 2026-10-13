@@ -10,9 +10,6 @@ jobs:
     name: Style and audit
     runs-on: macos-latest
     steps:
-      - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@main
-
       - name: Check out tap
         uses: actions/checkout@v4
 
