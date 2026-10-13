@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  audit:
+    name: Style and audit
+    runs-on: macos-latest
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Check out tap
+        uses: actions/checkout@v4
+
+      - name: Tap this checkout
+        run: |
+          mkdir -p "$(brew --repository)/Library/Taps/macfor-io"
+          ln -sfn "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/macfor-io/homebrew-tap"
+
+      - name: brew style
+        run: brew style macfor-io/tap
+
+      - name: brew audit
+        run: |
+          if ls Casks/*.rb >/dev/null 2>&1; then
+            brew audit --cask --strict --online macfor-io/tap/macfor
+          else
+            echo "No casks yet — skipping audit."
+          fi
