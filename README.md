@@ -32,9 +32,9 @@ Do not edit `Casks/macfor.rb` by hand. GoReleaser regenerates it on every
 tagged release of `macfor-community`. The `homebrew_casks` block in that
 repo's `.goreleaser.yaml` controls it.
 
-The release workflow pushes here using the `HOMEBREW_TAP_GITHUB_TOKEN` secret
-on `macfor-io/macfor-community`. The secret is a fine-grained PAT with
-**Contents: read & write** on `macfor-io/homebrew-tap` only.
+The release workflow pushes here over SSH with a write deploy key on this repo.
+Its private half is the `HOMEBREW_TAP_DEPLOY_KEY` secret on
+`macfor-io/macfor-community`.
 
 Prereleases (for example `v0.2.0-rc.1`) are not published to the tap.
 
