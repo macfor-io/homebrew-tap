@@ -4,18 +4,18 @@ cask "macfor" do
 
   on_macos do
     on_arm do
-      sha256 "43d944f8e4848dab3b4860790416f292ad79d48634c822d217b9cb0bd9cfc8d6"
+      sha256 "a9ace78a90482a8595aec3c7e9e55c906683e366429dde0d34ebdfb3d6899a0d"
       url "https://github.com/macfor-io/macfor-community/releases/download/v#{version}/macfor_#{version}_darwin_arm64.tar.gz"
     end
     on_intel do
-      sha256 "a61b1d52de115550df9aa189f047b32fbb73fcdc0314355d68158cbedbdd9b4d"
+      sha256 "1b12b11c87ca1761ee5a2ce7f4062028d83f28909b71d43ab475d7801ce543a4"
       url "https://github.com/macfor-io/macfor-community/releases/download/v#{version}/macfor_#{version}_darwin_amd64.tar.gz"
     end
   end
 
   name "macfor"
-  desc "macOS forensic artifact collector"
-  homepage "https://macfor.io"
+  desc "Forensic artifact collector"
+  homepage "https://macfor.io/"
 
   livecheck do
     skip "Auto-generated on release."
