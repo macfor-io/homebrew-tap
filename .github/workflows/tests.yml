@@ -20,6 +20,10 @@ jobs:
         run: |
           mkdir -p "$(brew --repository)/Library/Taps/macfor-io"
           ln -sfn "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/macfor-io/homebrew-tap"
+          # A tap linked by hand isn't trusted, and Homebrew refuses to load
+          # casks from untrusted taps. `brew install macfor-io/tap/macfor`
+          # trusts the cask implicitly; CI has to do it explicitly.
+          brew trust --tap macfor-io/tap
 
       - name: brew style
         run: brew style macfor-io/tap
